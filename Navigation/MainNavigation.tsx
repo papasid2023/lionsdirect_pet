@@ -9,6 +9,7 @@ import { FIREBASE_AUTH } from '../firebaseConfig';
 import Home from '../Screens/Home';
 import { User, onAuthStateChanged } from 'firebase/auth';
 import Pincode from '../Screens/Pincode';
+import Stories from '../Screens/InsideUser/Stories';
 
 const Stack = createNativeStackNavigator();
 
@@ -27,6 +28,7 @@ function HomeStack () {
   return(
     <Stack.Navigator initialRouteName='Home'>
       <Stack.Screen component={Home} name='Home' options={{headerShown: false}}/>
+      <Stack.Screen component={Stories} name='Stories' options={{headerShown: false}}/>
     </Stack.Navigator>
   )
 }

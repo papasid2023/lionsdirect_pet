@@ -23,7 +23,7 @@ const History = () => {
       getOrdersData.id = doc.id;
       setData(data);
       });
-    } catch (error) {
+    } catch (error) {``
       console.log(error);
     }
   }
