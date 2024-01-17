@@ -14,7 +14,7 @@ import { storage, CurrentMail } from '../../Pay/Auth';
 const Tarifs = () => {
 
   const [selectedIndex, setIndex] = React.useState(1);
-  const [modalVisible, setModalVisible] = useState(false);
+  const [modalVisible6, setModalVisible6] = useState(false);
   const [counter, setCounter] = useState(1);
   const [name] = useState(storage.getString('name'));
   const [instagram] = useState(storage.getString('instagram'));
@@ -178,15 +178,6 @@ const Tarifs = () => {
     } 
   }
 
-  const SaveOrderInDbFirebase = async () => {
-    try {
-      const docRef = await addDoc(collection(FIREBASE_DB, `${CurrentMail}`), {CurrentMail});
-      console.log(docRef.id);
-    } catch (error) {
-      console.log(error);
-    }
-  }
-
   const navigation = useNavigation();
 
   return (
@@ -240,23 +231,23 @@ const Tarifs = () => {
 
         </ScrollView>
         <Animatable.View animation={animation} duration={1000}>
-          <TouchableOpacity style={styles.bodyOfButton}  onPress={() => setModalVisible(true)}>
-            <Text style={styles.textOfButton} onPress={SaveOrderInFirestore}>ЗАКАЗАТЬ</Text>
+          <TouchableOpacity style={styles.bodyOfButton}  onPress={() => setModalVisible6(true)}>
+            <Text style={styles.textOfButton}>ЗАКАЗАТЬ</Text>
           </TouchableOpacity>
         </Animatable.View>
         <Modal
           animationType="slide"
           transparent={true}
-          visible={modalVisible}
+          visible={modalVisible6}
           onRequestClose={() => {
           Alert.alert('Modal has been closed.');
-          setModalVisible(!modalVisible);
+          setModalVisible6(!modalVisible6);
         }}>
           <View style={styles.ModalBox}>
             <View style={styles.ModalHeader}>
               <Text style={styles.title}>Корзина</Text>
               <Pressable
-                onPress={() => setModalVisible(!modalVisible)}>
+                onPress={() => setModalVisible6(!modalVisible6)}>
                 <Animatable.View>
                   <Icon style={styles.iconClose} name='close' />
                 </Animatable.View>
@@ -275,7 +266,7 @@ const Tarifs = () => {
                   )
                 })}
               </View>
-              <TouchableOpacity style={styles.finishButton} onPress={() => Linking.openURL(link)} onPressOut={() => setModalVisible(!modalVisible)}>
+              <TouchableOpacity style={styles.finishButton} onPress={() => Linking.openURL(link)} onPressOut={() => setModalVisible6(!modalVisible6)}>
                 <Text style={styles.ButtonModal}>ОПЛАТИТЬ</Text>
               </TouchableOpacity>
             </View>
