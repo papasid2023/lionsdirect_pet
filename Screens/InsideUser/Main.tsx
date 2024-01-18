@@ -1,7 +1,5 @@
 import React, { useState } from 'react'
-import { Alert, Image, Modal, Pressable, SafeAreaView, ScrollView, StyleSheet, Text, TouchableHighlight, View } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
-import Stories from './Stories';
+import { Image, Modal, Pressable, SafeAreaView, ScrollView, StyleSheet, Text, TouchableHighlight, View } from 'react-native';
 import * as Animatable from 'react-native-animatable';
 import Icon from 'react-native-vector-icons/Ionicons';
 
@@ -77,14 +75,14 @@ const Main = () => {
                 transparent={true}
                 visible={item.visible}
                 onRequestClose={item.onRequestClose}>
-                <View style={styles.ModalBox}>
+                <SafeAreaView style={styles.ModalBox}>
                   <Animatable.View animation={'zoomIn'}>
-                    <Pressable onPress={item.onRequestClose}>
-                      <Icon style={styles.iconClose} name={'close'} />
+                    <Pressable onPress={item.onRequestClose} style={styles.pressableModal}>
                       <Image style={styles.fullStories} source={item.source}/>
+                      <Icon style={styles.iconClose} name={'close'} />
                     </Pressable>
                   </Animatable.View>
-                </View>
+                </SafeAreaView>
               </Modal>
             </Pressable>
           )
@@ -103,6 +101,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     flex: 1,
     backgroundColor: '#F5F5F5',
+    marginLeft: 10,
   },
   title: {
     color: 'black',
@@ -114,9 +113,9 @@ const styles = StyleSheet.create({
     width: 90,
     height: 120,
     borderRadius: 5,
-    marginLeft: 5,
+    marginLeft: 10,
     borderWidth: 1,
-    borderColor: '#036161'
+    borderColor: '#036161',
 
   },
   viewForPrestories: {
@@ -127,10 +126,11 @@ const styles = StyleSheet.create({
     marginBottom: 50
   },
   ModalBox: {
-    backgroundColor: '#F5F5F5',
-    justifyContent: 'center',
+    backgroundColor: 'grey',
     alignItems: 'center',
-    flex: 1
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'space-between'
   },
   iconClose: {
     fontSize: 30,
@@ -142,12 +142,14 @@ const styles = StyleSheet.create({
   },
   titleForPreStories: {
     fontSize: 10,
-    marginLeft: 6,
+    marginLeft: 11,
     textAlign: 'left',
     width: 80,
     position: 'absolute',
     backgroundColor: 'white',
     fontWeight: '700',
     marginTop: 90
+  },
+  pressableModal: {
   }
 })

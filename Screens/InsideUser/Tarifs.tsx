@@ -16,11 +16,6 @@ const Tarifs = () => {
   const [selectedIndex, setIndex] = React.useState(1);
   const [modalVisible6, setModalVisible6] = useState(false);
   const [counter, setCounter] = useState(1);
-  const [name] = useState(storage.getString('name'));
-  const [instagram] = useState(storage.getString('instagram'));
-  const [telegram] = useState(storage.getString('telegram'));
-  const [whatsup] = useState(storage.getString('whatsup'));
-  const [city] = useState(storage.getString('city'));
 
   const tarifElements = [
     {
@@ -130,6 +125,14 @@ const Tarifs = () => {
     }
   ]
 
+  if (counter) {
+    function handleClickPlus() {
+      setCounter(counter + 1);
+    }
+    function handleClickMinus() {
+      setCounter(counter - 1);
+    }
+  }
 
 
   if (selectedIndex === 0) {
@@ -154,14 +157,7 @@ const Tarifs = () => {
     var link = tarifVip;
   }
 
-  if (counter) {
-    function handleClickPlus() {
-      setCounter(counter + 1);
-    }
-    function handleClickMinus() {
-      setCounter(counter - 1);
-    }
-  }
+  
 
   const TarifOfOrder = TestText;
 
